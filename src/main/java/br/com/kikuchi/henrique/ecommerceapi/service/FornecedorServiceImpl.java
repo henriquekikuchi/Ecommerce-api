@@ -25,15 +25,20 @@ public class FornecedorServiceImpl implements FornecedorService {
     }
 
     @Override
+    public Fornecedor getFornecedorByDescricao(String descricao) {
+        return fornecedorRepository.findByDescricao(descricao).orElseThrow(FornecedorNotFound::new);
+    }
+
+    @Override
     public Fornecedor saveFornecedor(Fornecedor fornecedor) {
         return fornecedorRepository.save(fornecedor);
     }
 
     @Override
     public void updateFornecedor(Long id, Fornecedor fornecedor) {
-        getFornecedorById(id);
-        fornecedor.setId(id);
-        saveFornecedor(fornecedor);
+        Fornecedor fornecedor1 = getFornecedorById(id);
+        fornecedor1.setDescricao(fornecedor.getDescricao());
+        fornecedorRepository.saveAndFlush(fornecedor1);
     }
 
     @Override

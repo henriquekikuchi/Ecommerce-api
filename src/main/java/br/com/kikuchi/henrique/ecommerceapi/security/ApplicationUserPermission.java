@@ -8,7 +8,9 @@ public enum ApplicationUserPermission {
     CATEGORIA_READ("categoria:read"),
     CATEGORIA_WRITE("categoria:write"),
     USER_READ("user:read"),
-    USER_WRITE("user:write");
+    USER_WRITE("user:write"),
+    PEDIDO_READ("pedido:read"),
+    PEDIDO_WRITE("pedido:write");
 
     private final String permissao;
 

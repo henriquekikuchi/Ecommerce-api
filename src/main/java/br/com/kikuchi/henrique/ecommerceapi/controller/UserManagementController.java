@@ -2,7 +2,6 @@ package br.com.kikuchi.henrique.ecommerceapi.controller;
 
 import br.com.kikuchi.henrique.ecommerceapi.entity.User;
 import br.com.kikuchi.henrique.ecommerceapi.security.ApplicationUserRole;
-import br.com.kikuchi.henrique.ecommerceapi.service.UserService;
 import br.com.kikuchi.henrique.ecommerceapi.service.UserServiceImpl;
 import lombok.RequiredArgsConstructor;
 import org.springframework.http.ResponseEntity;
@@ -12,9 +11,9 @@ import org.springframework.web.bind.annotation.*;
 import java.util.List;
 
 @RestController
-@RequestMapping("management/api/v1/users")
+@RequestMapping("api/v1/users")
 @RequiredArgsConstructor
-public class UserController {
+public class UserManagementController {
 
     private final UserServiceImpl userService;
     private final PasswordEncoder passwordEncoder;
@@ -23,7 +22,6 @@ public class UserController {
     public ResponseEntity<List<User>> getAllUsers(){
         return ResponseEntity.ok().body(userService.getAllUsers());
     }
-
 
     @PostMapping(value = "/create")
     public ResponseEntity<?> saveUser(@RequestBody User user){

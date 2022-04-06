@@ -9,6 +9,7 @@ import java.math.BigDecimal;
 public interface ProdutoService {
 
     Page<Produto> getAllProdutos(Pageable pageable);
+    Page<Produto> getAllProdutosByCategoria(Pageable pageable, String descricaoCategoria);
     Produto getProdutoById(Long id);
     Produto saveProduto(Produto produto);
     void updatePrecoDoProdutoById(Long id, BigDecimal preco);

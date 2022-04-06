@@ -10,13 +10,20 @@ import java.util.stream.Collectors;
 import static br.com.kikuchi.henrique.ecommerceapi.security.ApplicationUserPermission.*;
 
 public enum ApplicationUserRole {
-    CLIENT(Sets.newHashSet(PRODUTO_READ, CATEGORIA_READ)),
-    ADMIN(Sets.newHashSet(PRODUTO_READ,
+    CLIENT(Sets.newHashSet(
+            PRODUTO_READ,
+            CATEGORIA_READ,
+            PEDIDO_WRITE,
+            PEDIDO_READ)),
+    ADMIN(Sets.newHashSet(
+            PRODUTO_READ,
             PRODUTO_WRITE,
             FORNECEDOR_READ,
             FORNECEDOR_WRITE,
             CATEGORIA_READ,
-            CATEGORIA_WRITE));
+            CATEGORIA_WRITE,
+            PEDIDO_WRITE,
+            PEDIDO_READ));
 
     private final Set<ApplicationUserPermission> permissoes;
 

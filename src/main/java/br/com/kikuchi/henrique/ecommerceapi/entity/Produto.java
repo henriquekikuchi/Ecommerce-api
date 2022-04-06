@@ -1,9 +1,6 @@
 package br.com.kikuchi.henrique.ecommerceapi.entity;
 
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.*;
 
@@ -15,6 +12,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Entity(name="tbl_produto")
 public class Produto {
 
@@ -26,6 +24,6 @@ public class Produto {
     private BigDecimal preco;
     @ManyToOne(optional = false, targetEntity = Fornecedor.class)
     private Fornecedor fornecedor;
-    @ManyToOne(optional = false, targetEntity = Categoria.class)
+    @ManyToOne(optional = false, targetEntity = Categoria.class, cascade = {CascadeType.ALL})
     private Categoria categoria;
 }

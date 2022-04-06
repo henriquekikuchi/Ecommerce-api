@@ -1,7 +1,8 @@
 package br.com.kikuchi.henrique.ecommerceapi.entity;
 
 public enum CarrinhoDeCompraStatus {
-    ABERTO,
-    CANCELADO,
-    ENCERRADO
+    EM_ABERTO,
+    REALIZADO,
+    ENTREGUE,
+    CONCLUIDO
 }

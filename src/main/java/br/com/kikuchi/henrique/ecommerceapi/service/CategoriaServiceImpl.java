@@ -25,15 +25,20 @@ public class CategoriaServiceImpl implements CategoriaService {
     }
 
     @Override
+    public Categoria getCategoriaByDescricao(String descricao) {
+        return categoriaRepository.findByDescricao(descricao).orElseThrow(CategoriaNotFound::new);
+    }
+
+    @Override
     public Categoria saveCategoria(Categoria categoria) {
         return categoriaRepository.save(categoria);
     }
 
     @Override
     public void updateCategoria(Long id, Categoria categoria) {
-        getCategoriaById(id);
-        categoria.setId(id);
-        saveCategoria(categoria);
+        Categoria cat = getCategoriaById(id);
+        cat.setDescricao(categoria.getDescricao());
+        categoriaRepository.saveAndFlush(cat);
     }
 
     @Override

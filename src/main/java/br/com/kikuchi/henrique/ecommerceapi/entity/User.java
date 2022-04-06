@@ -1,10 +1,7 @@
 package br.com.kikuchi.henrique.ecommerceapi.entity;
 
 import br.com.kikuchi.henrique.ecommerceapi.security.ApplicationUserRole;
-import lombok.AllArgsConstructor;
-import lombok.Getter;
-import lombok.NoArgsConstructor;
-import lombok.Setter;
+import lombok.*;
 
 import javax.persistence.Column;
 import javax.persistence.Entity;
@@ -18,6 +15,7 @@ import static javax.persistence.GenerationType.IDENTITY;
 @Setter
 @NoArgsConstructor
 @AllArgsConstructor
+@Builder
 @Entity(name = "tbl_user")
 public class User {
 
