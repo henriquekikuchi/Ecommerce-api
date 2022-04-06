@@ -1,2 +1,7 @@
-package br.com.kikuchi.henrique.ecommerceapi.entity;public enum CarrinhoDeCompraStatus {
+package br.com.kikuchi.henrique.ecommerceapi.entity;
+
+public enum CarrinhoDeCompraStatus {
+    ABERTO,
+    CANCELADO,
+    ENCERRADO
 }

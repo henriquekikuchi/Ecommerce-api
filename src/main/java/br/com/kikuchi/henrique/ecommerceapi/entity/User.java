@@ -1,2 +1,32 @@
-package br.com.kikuchi.henrique.ecommerceapi.entity;public class User {
+package br.com.kikuchi.henrique.ecommerceapi.entity;
+
+import br.com.kikuchi.henrique.ecommerceapi.security.ApplicationUserRole;
+import lombok.AllArgsConstructor;
+import lombok.Getter;
+import lombok.NoArgsConstructor;
+import lombok.Setter;
+
+import javax.persistence.Column;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.Id;
+import java.util.UUID;
+
+import static javax.persistence.GenerationType.IDENTITY;
+
+@Getter
+@Setter
+@NoArgsConstructor
+@AllArgsConstructor
+@Entity(name = "tbl_user")
+public class User {
+
+    @Id
+    @GeneratedValue(strategy = IDENTITY)
+    private Long id;
+    private UUID uuid;
+    @Column(unique = true)
+    private String username;
+    private String password;
+    private ApplicationUserRole role;
 }

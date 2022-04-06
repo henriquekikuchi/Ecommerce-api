@@ -1,2 +1,13 @@
-package br.com.kikuchi.henrique.ecommerceapi.repository;public interface UserRepository {
+package br.com.kikuchi.henrique.ecommerceapi.repository;
+
+import br.com.kikuchi.henrique.ecommerceapi.entity.User;
+import org.springframework.data.jpa.repository.JpaRepository;
+import org.springframework.stereotype.Repository;
+
+import java.util.Optional;
+
+@Repository
+public interface UserRepository extends JpaRepository<User, Long> {
+
+    Optional<User> findUserByUsername(String username);
 }
