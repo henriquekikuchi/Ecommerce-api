@@ -15,6 +15,7 @@ import static br.com.kikuchi.henrique.ecommerceapi.security.ApplicationUserPermi
 
 
 @EnableWebSecurity
+@EnableGlobalMethodSecurity(prePostEnabled = true)
 public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final PasswordEncoder passwordEncoder;
@@ -38,10 +39,10 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS)
                 .and()
                 .authorizeRequests()
-                .antMatchers(HttpMethod.GET, "/api/*/users/**").hasAuthority(USER_READ.getPermissao())
-                .antMatchers(HttpMethod.POST, "/api/*/users/**").hasAuthority(USER_WRITE.getPermissao())
-                .antMatchers(HttpMethod.PUT, "/api/*/users/**").hasAuthority(USER_WRITE.getPermissao())
-                .antMatchers(HttpMethod.DELETE, "/api/*/users/**").hasAuthority(USER_WRITE.getPermissao())
+//                .antMatchers(HttpMethod.GET, "/api/*/users/**").hasAuthority(USER_READ.getPermissao())
+//                .antMatchers(HttpMethod.POST, "/api/*/users/**").hasAuthority(USER_WRITE.getPermissao())
+//                .antMatchers(HttpMethod.PUT, "/api/*/users/**").hasAuthority(USER_WRITE.getPermissao())
+//                .antMatchers(HttpMethod.DELETE, "/api/*/users/**").hasAuthority(USER_WRITE.getPermissao())
                 .antMatchers(HttpMethod.GET, "/api/*/categorias/**").hasAuthority(CATEGORIA_READ.getPermissao())
                 .antMatchers(HttpMethod.POST, "/api/*/categorias/**").hasAuthority(CATEGORIA_WRITE.getPermissao())
                 .antMatchers(HttpMethod.PUT, "/api/*/categorias/**").hasAuthority(CATEGORIA_WRITE.getPermissao())

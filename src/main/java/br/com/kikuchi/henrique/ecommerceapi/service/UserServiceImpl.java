@@ -5,6 +5,7 @@ import br.com.kikuchi.henrique.ecommerceapi.repository.UserRepository;
 import br.com.kikuchi.henrique.ecommerceapi.security.ApplicationUserRole;
 import br.com.kikuchi.henrique.ecommerceapi.security.UserSecurity;
 import lombok.RequiredArgsConstructor;
+import org.springframework.security.access.prepost.PreAuthorize;
 import org.springframework.security.core.userdetails.UserDetails;
 import org.springframework.security.core.userdetails.UsernameNotFoundException;
 import org.springframework.stereotype.Service;

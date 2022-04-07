@@ -4,5 +4,6 @@ public enum CarrinhoDeCompraStatus {
     EM_ABERTO,
     REALIZADO,
     ENTREGUE,
-    CONCLUIDO
+    CONCLUIDO,
+    CANCELADO
 }
