@@ -27,7 +27,7 @@ public class UserManagementController {
     public ResponseEntity<?> saveUser(@RequestBody User user){
         user.setPassword(passwordEncoder.encode(user.getPassword()));
         user.setRole(ApplicationUserRole.CLIENT);
-        return ResponseEntity.ok().body(userService.saveUser(user));
+        return ResponseEntity.ok().body(userService.saveUser(user).getUuid());
     }
 
     @PutMapping(value = "/{userId}/grant-permission")
