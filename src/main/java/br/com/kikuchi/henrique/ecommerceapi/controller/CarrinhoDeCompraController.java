@@ -1,13 +1,14 @@
 package br.com.kikuchi.henrique.ecommerceapi.controller;
 
+import br.com.kikuchi.henrique.ecommerceapi.dto.CarrinhoDeCompraResponseDTO;
 import br.com.kikuchi.henrique.ecommerceapi.entity.CarrinhoDeCompra;
-import br.com.kikuchi.henrique.ecommerceapi.entity.Produto;
 import br.com.kikuchi.henrique.ecommerceapi.service.CarrinhoDeCompraService;
 import lombok.RequiredArgsConstructor;
+import org.springframework.data.domain.Page;
+import org.springframework.data.domain.Pageable;
 import org.springframework.http.ResponseEntity;
 import org.springframework.web.bind.annotation.*;
 
-import java.util.Arrays;
 import java.util.List;
 
 
@@ -18,14 +19,13 @@ public class CarrinhoDeCompraController {
 
     private final CarrinhoDeCompraService carrinhoDeCompraService;
 
-    @GetMapping("/all")
-    public ResponseEntity<List<CarrinhoDeCompra>> getAllCarrinhoDeCompra(){
-        return ResponseEntity.ok().body(carrinhoDeCompraService.getAllCarrinhoDeCompra());
+    @GetMapping
+    public ResponseEntity<Page<CarrinhoDeCompraResponseDTO>> getAllCarrinhoDeCompra(Pageable pageable){
+        return ResponseEntity.ok().body(carrinhoDeCompraService.getAllCarrinhoDeCompra(pageable));
     }
 
     @PostMapping("/create")
     public ResponseEntity<?> saveCarrinhoDeCompra(@RequestBody ProdutosDto produtosDto){
-
         return ResponseEntity.ok().body(carrinhoDeCompraService.saveCarrinhoDeCompra(produtosDto.produtosList()));
     }
 

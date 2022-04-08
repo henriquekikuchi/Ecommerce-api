@@ -38,7 +38,6 @@ public class ProdutoController {
     @GetMapping(value = "/categorias/{nomeCategoria}")
     public ResponseEntity<Page<Produto>> getAllProdutosByCategoria(
             @PageableDefault(sort = "preco", direction = Sort.Direction.ASC) Pageable pageable, String nomeCategoria){
-
         return ResponseEntity.ok().body(produtoService.getAllProdutosByCategoria(pageable, nomeCategoria));
     }
 
