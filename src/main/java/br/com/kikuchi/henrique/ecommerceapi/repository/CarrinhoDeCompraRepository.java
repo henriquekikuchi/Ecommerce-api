@@ -15,8 +15,6 @@ public interface CarrinhoDeCompraRepository extends JpaRepository<CarrinhoDeComp
     @Query("SELECT c FROM tbl_compra c WHERE c.cliente.username = ?1 AND c.status = 0")
     Optional<CarrinhoDeCompra> findCarrinhoDeCompraEmAbertoByClientUsername(String username);
 
-    List<CarrinhoDeCompra> findAllByCliente_Username(String username);
-
     Optional<CarrinhoDeCompra> findCarrinhoDeCompraByIdAndCliente_Username(Long id, String username);
 
     @Query("SELECT c FROM tbl_compra c")
