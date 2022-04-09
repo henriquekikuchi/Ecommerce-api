@@ -48,7 +48,7 @@ POST:
     "password": "string
 }
 ```
-
+--
 ### Gerenciar Usuarios:
 GET:
 > http://localhost:8080/api/v1/users retorna todos usuários
@@ -64,7 +64,7 @@ POST:
 
 PUT:
 > http://localhost:8080/api/v1/users/{userId}/grant-permission?roleName=ADMIN conceder role de admin para um usuario
-
+---
 ### Produtos:
 GET:
 > http://localhost:8080/api/v1/produtos retorna todos os produtos
@@ -88,7 +88,7 @@ PUT:
 
 DELETE:
 > http://localhost:8080/api/v1/produtos/{produtoId} deleta um produto pelo seu id
-
+---
 ### Fornecedores:
 GET:
 > http://localhost:8080/api/v1/fornecedores retorna todos fornecedores
@@ -114,7 +114,7 @@ PUT:
 
 DELETE:
 > http://localhost:8080/api/v1/fornecedores/{idFornecedor} deleta fornecedor pelo id
-
+---
 ### Categorias:
 GET:
 > http://localhost:8080/api/v1/categorias retorna todos categorias
