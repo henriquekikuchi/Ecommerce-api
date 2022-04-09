@@ -1,11 +1,11 @@
 package br.com.kikuchi.henrique.ecommerceapi.filter;
 
-import br.com.kikuchi.henrique.ecommerceapi.service.UserService;
+import br.com.kikuchi.henrique.ecommerceapi.service.UserServiceImpl;
 import io.jsonwebtoken.*;
+import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.security.authentication.AuthenticationManager;
 import org.springframework.security.authentication.UsernamePasswordAuthenticationToken;
 import org.springframework.security.core.GrantedAuthority;
-import org.springframework.security.core.authority.GrantedAuthoritiesContainer;
 import org.springframework.security.core.authority.SimpleGrantedAuthority;
 import org.springframework.security.core.context.SecurityContextHolder;
 import org.springframework.security.core.userdetails.UserDetails;
@@ -17,23 +17,19 @@ import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
 import java.io.IOException;
 import java.nio.charset.StandardCharsets;
-import java.util.ArrayList;
-import java.util.Arrays;
 import java.util.Collection;
 import java.util.List;
 import java.util.stream.Collectors;
-import java.util.stream.Stream;
 
 import static br.com.kikuchi.henrique.ecommerceapi.security.SecurityConstants.*;
 
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 
-    private final UserService userService;
+    @Autowired
+    private UserServiceImpl userService;
 
-    public JWTAuthorizationFilter(AuthenticationManager authenticationManager,
-                                  UserService userService) {
+    public JWTAuthorizationFilter(AuthenticationManager authenticationManager) {
         super(authenticationManager);
-        this.userService = userService;
     }
 
     @Override
