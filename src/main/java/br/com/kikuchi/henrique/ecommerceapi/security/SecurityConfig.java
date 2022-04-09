@@ -2,6 +2,8 @@ package br.com.kikuchi.henrique.ecommerceapi.security;
 
 import br.com.kikuchi.henrique.ecommerceapi.filter.JWTAuthenticationFilter;
 import br.com.kikuchi.henrique.ecommerceapi.filter.JWTAuthorizationFilter;
+import br.com.kikuchi.henrique.ecommerceapi.handler.RestAccessDeniedHandler;
+import br.com.kikuchi.henrique.ecommerceapi.handler.RestAuthenticationEntryPoint;
 import br.com.kikuchi.henrique.ecommerceapi.service.UserServiceImpl;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.HttpMethod;
@@ -22,11 +24,18 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
 
     private final PasswordEncoder passwordEncoder;
     private final UserServiceImpl userService;
+    private final RestAccessDeniedHandler accessDeniedHandler;
+    private final RestAuthenticationEntryPoint authenticationEntryPoint;
 
     @Autowired
-    public SecurityConfig(PasswordEncoder passwordEncoder, UserServiceImpl userService){
+    public SecurityConfig(PasswordEncoder passwordEncoder,
+                          UserServiceImpl userService,
+                          RestAccessDeniedHandler accessDeniedHandler,
+                          RestAuthenticationEntryPoint authenticationEntryPoint){
         this.passwordEncoder = passwordEncoder;
         this.userService = userService;
+        this.accessDeniedHandler = accessDeniedHandler;
+        this.authenticationEntryPoint = authenticationEntryPoint;
     }
 
     @Override
@@ -43,8 +52,14 @@ public class SecurityConfig extends WebSecurityConfigurerAdapter {
                 .antMatchers(HttpMethod.GET, "/swagger-ui/**", "/v3/api-docs/**").permitAll()
                 .anyRequest().authenticated()
                 .and()
+                .exceptionHandling()
+                .accessDeniedHandler(accessDeniedHandler)
+                .authenticationEntryPoint(authenticationEntryPoint)
+                .and()
                 .addFilter(new JWTAuthenticationFilter(authenticationManager()))
-                .addFilter(new JWTAuthorizationFilter(authenticationManager()))
+                .addFilter(new JWTAuthorizationFilter(authenticationManager(), userService))
                 .sessionManagement().sessionCreationPolicy(SessionCreationPolicy.STATELESS);
     }
+
+
 }
