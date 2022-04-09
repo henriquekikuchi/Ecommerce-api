@@ -24,16 +24,16 @@ Clone o repositório e entrando dentro da pasta raiz utilize o próprio maven wr
 
 ## Nesse projeto foi utilizado:
 * Spring Data JPA
->  * jpql
->  * @Query
->  * projections
-> * Spring Security
-    >  * JWT
-> * Mapstruct
-> * Lombok
-> * OpenAPI
-> * Guava (Lib Utils Google)
-> * jjwt
+  * jpql
+  * @Query
+  * projections
+* Spring Security
+    * JWT
+* Mapstruct
+* Lombok
+* OpenAPI
+* Guava (Lib Utils Google)
+* jjwt
 
 ## Endpoints:
 Todos os endpoints podem ser visualizados a partir da documentação gerada automaticamente pelo OpenAPI:
@@ -48,7 +48,7 @@ POST:
     "password": "string
 }
 ```
---
+---
 ### Gerenciar Usuarios:
 GET:
 > http://localhost:8080/api/v1/users retorna todos usuários
