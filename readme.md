@@ -3,7 +3,7 @@
 Projeto desenvolvido para estudos referente ao Spring Security, chamado de "ecommerce-api" se trata de uma simulação de 
 um ecommerce onde usuarios comuns e administrador possui autorizações diferentes.
 
-## Requisitos
+## Requisitos:
 | Role           | Descricao                                                                                                           | Retorno |
 |----------------|---------------------------------------------------------------------------------------------------------------------|---------|
 | CLIENT         | deverá conseguir visualizar as informações de todos os produtos, com paginação e ordenação default por menor preço. | |
@@ -13,33 +13,33 @@ um ecommerce onde usuarios comuns e administrador possui autorizações diferent
 | CLIENT / ADMIN | visualizar todos os produtos de acordo com a categoria                                                              | |
 | CLIENT / ADMIN | visualizar todos os produtos de acordo com categoria(s) filtradas(s)                                                | |
 
-## Pré requisitos
+## Pré requisitos:
 * Java 17
 * Maven
 * Postgres
 
-## Como rodar
+## Como rodar:
 Clone o repositório e entrando dentro da pasta raiz utilize o próprio maven wrapper para conseguir roda-lo.
 > ./mvnw spring-boot:run
 
 ## Nesse projeto foi utilizado:
 * Spring Data JPA
-  * jpql
-  * @Query
-  * projections
-* Spring Security
-  * JWT
-* Mapstruct
-* Lombok
-* OpenAPI
-* Guava (Lib Utils Google)
-* jjwt
+>  * jpql
+>  * @Query
+>  * projections
+> * Spring Security
+    >  * JWT
+> * Mapstruct
+> * Lombok
+> * OpenAPI
+> * Guava (Lib Utils Google)
+> * jjwt
 
-## Endpoints
+## Endpoints:
 Todos os endpoints podem ser visualizados a partir da documentação gerada automaticamente pelo OpenAPI:
 > http://localhost:8080/swagger-ui/index.html
 
-### Autenticar
+### Autenticar:
 POST:
 > https://localhost:8080/auth retornará o JWT Token com validade de 15 minutos que será usado para todas as requisições.
 ```
@@ -65,7 +65,7 @@ POST:
 PUT:
 > http://localhost:8080/api/v1/users/{userId}/grant-permission?roleName=ADMIN conceder role de admin para um usuario
 
-### Produtos
+### Produtos:
 GET:
 > http://localhost:8080/api/v1/produtos retorna todos os produtos
 
@@ -89,7 +89,7 @@ PUT:
 DELETE:
 > http://localhost:8080/api/v1/produtos/{produtoId} deleta um produto pelo seu id
 
-### Fornecedores
+### Fornecedores:
 GET:
 > http://localhost:8080/api/v1/fornecedores retorna todos fornecedores
 
@@ -115,7 +115,7 @@ PUT:
 DELETE:
 > http://localhost:8080/api/v1/fornecedores/{idFornecedor} deleta fornecedor pelo id
 
-### Categoria
+### Categorias:
 GET:
 > http://localhost:8080/api/v1/categorias retorna todos categorias
 
@@ -141,7 +141,7 @@ PUT:
 DELETE:
 > http://localhost:8080/api/v1/categorias/{idCategoria} deleta categoria pelo id
 
-### Carrinho de compras
+### Carrinho de compras:
 GET:
 > http://localhost:8080/api/v1/carrinhos-de-compras retorna todos Carrinho de compras
 
