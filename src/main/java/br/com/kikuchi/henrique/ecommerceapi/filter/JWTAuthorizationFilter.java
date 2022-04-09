@@ -1,5 +1,6 @@
 package br.com.kikuchi.henrique.ecommerceapi.filter;
 
+import br.com.kikuchi.henrique.ecommerceapi.service.UserService;
 import br.com.kikuchi.henrique.ecommerceapi.service.UserServiceImpl;
 import io.jsonwebtoken.*;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -25,11 +26,11 @@ import static br.com.kikuchi.henrique.ecommerceapi.security.SecurityConstants.*;
 
 public class JWTAuthorizationFilter extends BasicAuthenticationFilter {
 
-    @Autowired
-    private UserServiceImpl userService;
+    private UserService userService;
 
-    public JWTAuthorizationFilter(AuthenticationManager authenticationManager) {
+    public JWTAuthorizationFilter(AuthenticationManager authenticationManager, UserService userService) {
         super(authenticationManager);
+        this.userService = userService;
     }
 
     @Override
