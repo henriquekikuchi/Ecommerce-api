@@ -15,6 +15,8 @@ public interface ProdutoService {
     @PreAuthorize("hasAnyRole('CLIENT','ADMIN')")
     Page<Produto> getAllProdutosByCategoria(Pageable pageable, String descricaoCategoria);
     @PreAuthorize("hasAnyRole('CLIENT','ADMIN')")
+    Page<Produto> getAllProdutosByCategoriasId(Pageable pageable, long[] idCategorias);
+    @PreAuthorize("hasAnyRole('CLIENT','ADMIN')")
     Produto getProdutoById(Long id);
     @PreAuthorize("hasRole('ADMIN')")
     Produto saveProduto(Produto produto);

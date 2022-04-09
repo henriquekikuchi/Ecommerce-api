@@ -69,6 +69,9 @@ PUT:
 GET:
 > http://localhost:8080/api/v1/produtos retorna todos os produtos
 
+GET:
+> http://localhost:8080/api/v1/produtos?categorias=2,3 retorna todos os produtos das categorias separadas por ,
+
 POST:
 > http://localhost:8080/api/v1/produtos/create cria um novo produto
 ```

@@ -30,16 +30,29 @@ public class ProdutoController {
 
     @GetMapping
     public ResponseEntity<Page<Produto>> getAllProdutos(
-            @PageableDefault(sort = "preco", direction = Sort.Direction.ASC) Pageable pageable){
+            @PageableDefault(sort = "preco", direction = Sort.Direction.ASC) Pageable pageable,
+            @RequestParam(value = "categorias", required = false) long[] categoriasId){
+
+        if (categoriasId != null){
+            return ResponseEntity.ok().body(produtoService.getAllProdutosByCategoriasId(pageable, categoriasId));
+        }
 
         return ResponseEntity.ok().body(produtoService.getAllProdutos(pageable));
     }
+
+//    @GetMapping(/categorias/search)
+//    public ResponseEntity<Page<Produto>> getAllProdutosByCategoriasId(
+//            @PageableDefault(sort = "preco", direction = Sort.Direction.ASC) Pageable pageable,
+//            @RequestParam("categorias") long[] categoriasId){
+//        return ResponseEntity.ok().body(produtoService.getAllProdutosByCategoriasId(pageable, categoriasId));
+//    }
 
     @GetMapping(value = "/categorias/{nomeCategoria}")
     public ResponseEntity<Page<Produto>> getAllProdutosByCategoria(
             @PageableDefault(sort = "preco", direction = Sort.Direction.ASC) Pageable pageable, String nomeCategoria){
         return ResponseEntity.ok().body(produtoService.getAllProdutosByCategoria(pageable, nomeCategoria));
     }
+
 
     @PostMapping("/create")
     public ResponseEntity<Produto> saveProduto(@RequestBody @Valid ProdutoCreateDto produtoDto){

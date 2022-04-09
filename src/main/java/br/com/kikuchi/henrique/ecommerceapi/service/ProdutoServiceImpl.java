@@ -27,8 +27,13 @@ public class ProdutoServiceImpl implements ProdutoService {
     }
 
     @Override
+    public Page<Produto> getAllProdutosByCategoriasId(Pageable pageable, long[] idCategorias) {
+        return produtoRepository.findAllByCategoria_IdIn(pageable, idCategorias);
+    }
+
+    @Override
     public Produto getProdutoById(Long id) {
-        return produtoRepository.findById(id).orElseThrow(() -> new ProdutoNotFound());
+        return produtoRepository.findById(id).orElseThrow(ProdutoNotFound::new);
     }
 
     @Override
