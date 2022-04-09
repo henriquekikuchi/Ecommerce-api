@@ -1,4 +1,4 @@
-package br.com.kikuchi.henrique.ecommerceapi.security.handler;
+package br.com.kikuchi.henrique.ecommerceapi.handler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.security.access.AccessDeniedException;
@@ -18,7 +18,7 @@ public class RestAccessDeniedHandler implements AccessDeniedHandler {
                        HttpServletResponse response,
                        AccessDeniedException accessDeniedException)
             throws IOException, ServletException {
-        ErrorResponse res = new ErrorResponse(403, "Access Denied");
+        ErrorResponse res = new ErrorResponse("Access Denied", "Access denied");
         OutputStream out = response.getOutputStream();
         ObjectMapper mapper = new ObjectMapper();
         mapper.writeValue(out, res);

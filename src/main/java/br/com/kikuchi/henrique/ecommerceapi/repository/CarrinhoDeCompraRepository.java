@@ -22,4 +22,5 @@ public interface CarrinhoDeCompraRepository extends JpaRepository<CarrinhoDeComp
 
     @Query("SELECT c FROM tbl_compra c WHERE c.cliente.username = ?1")
     Page<CarrinhoDeCompraResponseDTO> findAllCarrinhosDeCompraByCliente_Username(Pageable pageable, String username);
+
 }

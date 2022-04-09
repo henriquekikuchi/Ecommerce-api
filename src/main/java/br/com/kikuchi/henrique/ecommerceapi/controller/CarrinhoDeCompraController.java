@@ -24,6 +24,11 @@ public class CarrinhoDeCompraController {
         return ResponseEntity.ok().body(carrinhoDeCompraService.getAllCarrinhoDeCompra(pageable));
     }
 
+    @GetMapping("{idCarrinho}")
+    public ResponseEntity<CarrinhoDeCompra> getCarrinhoById(@PathVariable("idCarrinho") Long idCarrinho){
+        return ResponseEntity.ok().body(carrinhoDeCompraService.getCarrinhoDeCompraById(idCarrinho));
+    }
+
     @PostMapping("/create")
     public ResponseEntity<?> saveCarrinhoDeCompra(@RequestBody ProdutosDto produtosDto){
         return ResponseEntity.ok().body(carrinhoDeCompraService.saveCarrinhoDeCompra(produtosDto.produtosList()));

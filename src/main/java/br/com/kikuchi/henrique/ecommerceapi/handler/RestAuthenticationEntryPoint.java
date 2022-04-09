@@ -1,4 +1,4 @@
-package br.com.kikuchi.henrique.ecommerceapi.security.handler;
+package br.com.kikuchi.henrique.ecommerceapi.handler;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 import org.springframework.security.core.AuthenticationException;
@@ -19,7 +19,7 @@ public class RestAuthenticationEntryPoint implements AuthenticationEntryPoint {
                          AuthenticationException authException)
             throws IOException, ServletException {
 
-        ErrorResponse res = new ErrorResponse(401, "Unauthorised");
+        ErrorResponse res = new ErrorResponse("Unauthorised", "You are not allowed to do that");
         OutputStream out = response.getOutputStream();
         ObjectMapper mapper = new ObjectMapper();
         mapper.writeValue(out, res);
